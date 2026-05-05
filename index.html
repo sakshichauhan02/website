@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARS Global | Premium Digital Marketing Agency Gurugram</title>
+    <meta name="description" content="SARS Global is a premium full-service digital marketing agency based in Gurugram, scaling brands with SEO, Content, Web Dev, and Performance Ads.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Colors */
+            --primary-orange: #FF6B2B;
+            --deep-orange: #E85A1A;
+            --off-white: #F9F9F9;
+            --cream: #FFFDF9;
+            --pure-white: #FFFFFF;
+            --charcoal: #333333;
+            --text-main: #333333;
+            --dark-card: #F0F0F0;
+            --mid-grey: #888888;
+            --light-grey: #EEEEEE;
+            --dim-heading: #777777;
+            --near-black: #222222;
+
+            /* Transitions */
+            --transition-smooth: 0.8s cubic-bezier(.16,1,.3,1);
+            --transition-fast: 0.3s ease;
+            --transition-nav: 0.4s cubic-bezier(.16,1,.3,1);
+        }
+
+        /* Reset & Global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+            font-weight: 400 !important;
+            font-style: normal !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-color: var(--off-white);
+            cursor: none;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6, .syne, .logo, .nav-cta, .btn, .stat-num-refined {
+            font-family: 'Open Sans', sans-serif !important;
+            text-transform: none;
+            font-weight: 400 !important;
+        }
+
+        i, em {
+            font-style: normal !important;
+            color: inherit;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Open Sans', sans-serif;
+            color: var(--primary-orange);
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .section-heading {
+            font-family: 'Open Sans', sans-serif;
+            font-size: clamp(38px, 5vw, 80px);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 64px;
+            color: var(--text-main);
+        }
+
+        .section-heading span {
+            display: block;
+        }
+
+        .section-heading .muted {
+            color: var(--mid-grey);
+        }
+
+        /* Layout Helpers */
+        section {
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-gap-light {
+            background-color: var(--light-grey);
+            display: grid;
+            gap: 1px;
+        }
+
+        .grid-gap-dark {
+            background-color: var(--dark-card);
+            display: grid;
+            gap: 1px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 18px 36px;
+            border-radius: 100px;
+            font-family: 'Open Sans', sans-serif;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            border: none;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-orange {
+            background-color: var(--primary-orange);
+            color: #FFF;
+        }
+
+        .btn-orange:hover {
+            background-color: var(--deep-orange);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--mid-grey);
+            color: var(--pure-white);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        /* Custom Cursor */
+        #cursor-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+        }
+
+        #cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--primary-orange);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: width 0.3s cubic-bezier(.16,1,.3,1), height 0.3s cubic-bezier(.16,1,.3,1);
+            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            background-color: transparent;
+        }
+
+        /* 1. NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: var(--transition-nav);
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 40px;
+            border-bottom: 1px solid var(--light-grey);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-size: 24px;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .logo span { 
+            color: var(--primary-orange); 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .nav-cta {
+            background-color: var(--primary-orange);
+            color: #FFF;
+            padding: 11px 24px;
+            border-radius: 100px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: var(--transition-nav);
+            display: inline-flex;
+            align-items: center;
+            border: none;
+        }
+
+        /* 2. HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            background-color: var(--cream);
+            padding: 150px 40px 80px;
+            position: relative;
+        }
+
+        .hero-glow-refined {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 107, 43, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-badge-refined {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 107, 43, 0.2);
+            background: rgba(255, 107, 43, 0.05);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 11px;
+            color: var(--primary-orange);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        .pulse-dot-refined {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero-title-refined {
+            font-size: clamp(48px, 8vw, 110px);
+            line-height: 1.0;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+            color: var(--text-main);
+            z-index: 1;
+        }
+
+        .hero-title-refined i {
+            color: var(--primary-orange);
+        }
+
+        .hero-subheadline-refined {
+            color: #666;
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 50px;
+            z-index: 1;
+        }
+
+        .hero-cta-refined {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 80px;
+            z-index: 1;
+        }
+
+        .btn-primary-refined {
+            background-color: var(--primary-orange);
+            color: #FFF;
+            padding: 18px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-ghost-refined {
+            border: 1px solid #DDD;
+            color: var(--text-main);
+            padding: 18px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-ghost-refined:hover {
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        .btn-ghost-refined svg path {
+            stroke: currentColor;
+        }
+
+        .hero-stats-refined {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #EEE;
+            padding-top: 40px;
+            z-index: 1;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .stat-item-refined {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-num-refined {
+            font-size: 32px;
+            color: var(--text-main);
+        }
+
+        .stat-num-refined span {
+            color: var(--primary-orange);
+        }
+
+        .stat-label-refined {
+            color: #999;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator-refined {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .scroll-line-refined {
+            width: 1px;
+            height: 60px;
+            background: #EEE;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line-refined::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-orange);
+            animation: scroll-anim 2s infinite cubic-bezier(.16,1,.3,1);
+        }
+
+        @keyframes scroll-anim {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .scroll-text-refined {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #BBB;
+            writing-mode: vertical-rl;
+        }
+
+        /* 3. MARQUEE STRIP REFINED */
+        .marquee-section-refined {
+            background-color: var(--light-grey);
+            border-top: 1px solid #DDD;
+            border-bottom: 1px solid #DDD;
+            padding: 18px 0;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 28s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-section-refined:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .marquee-group {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .marquee-item-refined {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 0 28px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #555;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .marquee-item-refined::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background-color: #FF6B2B;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .marquee-item-refined:hover {
+            color: #FF6B2B;
+        }
+
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* 4. SERVICES REFINED */
+        .services-refined {
+            background-color: var(--pure-white);
+            padding: 120px 0;
+            color: var(--text-main);
+        }
+
+        .services-header-refined {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 64px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 40px;
+        }
+
+        .services-header-left {
+            text-align: left;
+        }
+
+        .services-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .services-heading-refined {
+            font-size: clamp(32px, 4vw, 56px);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .services-heading-refined span {
+            color: #AAA;
+            display: block;
+        }
+
+        .services-link-refined {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .services-link-refined:hover {
+            gap: 12px;
+            color: var(--primary-orange);
+        }
+
+        .services-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #EEE;
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid #EEE;
+        }
+
+        .service-card-refined {
+            background-color: var(--pure-white);
+            padding: 48px 40px;
+            position: relative;
+            transition: background-color 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+
+        .service-card-refined:hover {
+            background-color: #FAFAFA;
+        }
+
+        .service-card-refined::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: width 0.4s cubic-bezier(.16,1,.3,1);
+        }
+
+        .service-card-refined:hover::after {
+            width: 100%;
+        }
+
+        .service-num-refined {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #DDD;
+            margin-bottom: 32px;
+        }
+
+        .service-icon-refined {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #EEE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background-color: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .service-card-refined:hover .service-icon-refined {
+            border-color: var(--primary-orange);
+            background-color: rgba(255, 107, 43, 0.04);
+        }
+
+        .service-name-refined {
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+
+        .service-desc-refined {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .service-arrow-refined {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 36px;
+            height: 36px;
+            border: 1px solid #EEE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            color: #DDD;
+        }
+
+        .service-card-refined:hover .service-arrow-refined {
+            background-color: var(--primary-orange);
+            border-color: var(--primary-orange);
+            color: #FFF;
+            transform: rotate(-45deg);
+        }
+
+        /* Scroll Reveal Base */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 1024px) {
+            .services-grid-refined { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid-refined { grid-template-columns: 1fr; }
+            .services-header-refined { flex-direction: column; align-items: flex-start; gap: 20px; }
+        }
+
+        /* 5. TRUST BAR & AWARDS REFINED */
+        .trust-section-refined {
+            background-color: var(--off-white);
+            padding: 52px 40px;
+            text-align: center;
+            overflow: hidden;
+            border-top: 1px solid #EEE;
+        }
+
+        .trust-label-refined {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 36px;
+            display: block;
+        }
+
+        .trust-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 22s linear infinite;
+        }
+
+        .trust-logo-refined {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            color: #AAA;
+            padding: 0 36px;
+            border-right: 1px solid #EEE;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .trust-logo-refined:hover {
+            color: var(--primary-orange);
+        }
+
+        .awards-strip-refined {
+            background-color: var(--cream);
+            border-top: 1px solid #EEE;
+            border-bottom: 1px solid #EEE;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .award-item-refined {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            color: #777;
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+
+        .award-item-refined:hover {
+            color: var(--primary-orange);
+        }
+
+        .award-separator {
+            width: 1px;
+            height: 24px;
+            background-color: #EEE;
+        }
+
+        @media (max-width: 768px) {
+            .award-separator { display: none; }
+            .awards-strip-refined { gap: 20px; }
+        }
+
+        /* 6. PROCESS REFINED */
+        .process-refined {
+            background-color: var(--pure-white);
+            padding: 120px 0;
+            color: var(--text-main);
+        }
+
+        .process-header-refined {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+
+        .process-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .process-heading-refined {
+            font-size: clamp(32px, 4vw, 56px);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .process-heading-refined span {
+            color: #CCC;
+            display: block;
+        }
+
+        .process-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: #EEE;
+            max-width: 1400px;
+            margin: 60px auto 0;
+            border: 1px solid #EEE;
+        }
+
+        .process-card-refined {
+            background-color: var(--pure-white);
+            padding: 40px 32px;
+            position: relative;
+            transition: background-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .process-card-refined:hover {
+            background-color: var(--off-white);
+        }
+
+        .process-card-refined::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: width 0.4s cubic-bezier(.16,1,.3,1);
+        }
+
+        .process-card-refined:hover::after {
+            width: 100%;
+        }
+
+        .process-num-refined {
+            font-size: 52px;
+            letter-spacing: -3px;
+            color: #F0F0F0;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .process-title-refined {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .process-desc-refined {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 1024px) {
+            .process-grid-refined { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid-refined { grid-template-columns: 1fr; }
+        }
+
+        /* 7. CASE STUDIES REFINED */
+        .cases-refined {
+            background-color: var(--off-white);
+            padding: 120px 0;
+            color: var(--text-main);
+        }
+
+        .cases-header-refined {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 64px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .cases-header-left {
+            text-align: left;
+        }
+
+        .cases-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .cases-heading-refined {
+            font-size: clamp(32px, 4vw, 56px);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .cases-heading-refined span {
+            color: #AAA;
+            display: block;
+        }
+
+        .cases-link-refined {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .cases-link-refined:hover {
+            gap: 12px;
+            color: var(--primary-orange);
+        }
+
+        .cases-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .case-card-refined {
+            background-color: var(--pure-white);
+            padding: 56px;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #EEE;
+        }
+
+        .case-card-refined.big-card {
+            grid-column: span 2;
+        }
+
+        .case-card-refined:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border-color: var(--primary-orange);
+        }
+
+        .case-tag-refined {
+            font-size: 11px;
+            color: var(--primary-orange);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .case-title-refined {
+            font-size: 32px;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .case-desc-refined {
+            font-size: 15px;
+            color: #777;
+            line-height: 1.7;
+            max-width: 620px;
+            margin-bottom: 40px;
+        }
+
+        .case-metrics-refined {
+            display: flex;
+            gap: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #EEE;
+            margin-top: auto;
+        }
+
+        .metric-refined .metric-val {
+            font-size: 24px;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .metric-refined .metric-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .case-card-refined { padding: 40px; }
+            .case-card-refined.big-card { grid-column: span 1; }
+            .cases-grid-refined { grid-template-columns: 1fr; }
+        }
+
+        /* 8. TESTIMONIALS REFINED */
+        .testimonials-refined {
+            background-color: var(--pure-white);
+            padding: 120px 0;
+            color: var(--text-main);
+        }
+
+        .testimonials-header-refined {
+            max-width: 1400px;
+            margin: 0 auto 64px;
+            padding: 0 40px;
+        }
+
+        .testimonial-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-heading-refined {
+            font-size: clamp(32px, 4vw, 56px);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .testimonial-heading-refined span {
+            color: #DDD;
+            display: block;
+        }
+
+        .testimonials-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #EEE;
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid #EEE;
+        }
+
+        .testimonial-card-refined {
+            background-color: var(--pure-white);
+            padding: 44px 40px;
+            position: relative;
+            transition: background-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card-refined:hover {
+            background-color: var(--off-white);
+        }
+
+        .testimonial-watermark-refined {
+            position: absolute;
+            top: -10px;
+            left: 28px;
+            font-size: 130px;
+            color: #F5F5F5;
+            pointer-events: none;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        .testimonial-text-refined {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author-refined {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .author-avatar-refined {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 107, 43, 0.05);
+            border: 1px solid rgba(255, 107, 43, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 14px;
+        }
+
+        .author-info-refined .author-name {
+            display: block;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .author-info-refined .author-role {
+            font-size: 12px;
+            color: #999;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid-refined { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid-refined { grid-template-columns: 1fr; }
+        }
+
+        /* 9. BLOG REFINED */
+        .blog-refined {
+            background-color: var(--cream);
+            padding: 120px 0;
+            color: var(--text-main);
+            border-top: 1px solid #EEE;
+        }
+
+        .blog-header-refined {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 64px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 40px;
+        }
+
+        .blog-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .blog-heading-refined {
+            font-size: clamp(32px, 4vw, 56px);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--text-main);
+        }
+
+        .blog-heading-refined span {
+            color: #AAA;
+            display: block;
+        }
+
+        .blog-link-refined {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+
+        .blog-link-refined:hover {
+            gap: 12px;
+            color: var(--primary-orange);
+        }
+
+        .blog-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background-color: #EEE;
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid #EEE;
+        }
+
+        .blog-card-refined {
+            background-color: var(--pure-white);
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-refined::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-orange);
+            transition: width 0.4s ease;
+        }
+
+        .blog-card-refined:hover::before {
+            width: 100%;
+        }
+
+        .blog-card-refined:hover {
+            background-color: #FAFAFA;
+        }
+
+        .blog-tag-refined {
+            color: var(--primary-orange);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .blog-title-refined {
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-refined:hover .blog-title-refined {
+            color: var(--primary-orange);
+        }
+
+        .blog-excerpt-refined {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .blog-meta-refined {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: #BBB;
+        }
+
+        .blog-meta-refined span.dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: #EEE;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-grid-refined { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid-refined { grid-template-columns: 1fr; }
+        }
+
+        /* 10. CTA SECTION REFINED */
+        .cta-section-refined {
+            background-color: var(--off-white);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-top: 1px solid #EEE;
+        }
+
+        .cta-glow-refined {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(255, 107, 43, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cta-content-refined {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-label-refined {
+            display: block;
+            color: var(--primary-orange);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .cta-title-refined {
+            font-size: clamp(38px, 6vw, 80px);
+            line-height: 1.0;
+            letter-spacing: -2px;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .cta-title-refined i {
+            color: var(--primary-orange);
+        }
+
+        .cta-subtext-refined {
+            font-size: 16px;
+            color: #777;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 48px;
+        }
+
+        .cta-form-refined {
+            display: flex;
+            background-color: var(--pure-white);
+            border: 1px solid #DDD;
+            border-radius: 100px;
+            padding: 6px;
+            max-width: 480px;
+            margin: 0 auto 16px;
+            transition: all 0.4s ease;
+        }
+
+        .cta-form-refined:focus-within {
+            border-color: var(--primary-orange);
+            box-shadow: 0 10px 30px rgba(255, 107, 43, 0.05);
+        }
+
+        .cta-input-refined {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0 24px;
+            color: var(--text-main);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .cta-input-refined::placeholder {
+            color: #AAA;
+        }
+
+        .cta-btn-refined {
+            background-color: var(--primary-orange);
+            color: #FFF;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn-refined:hover {
+            background-color: var(--deep-orange);
+        }
+
+        .cta-trust-note-refined {
+            font-size: 13px;
+            color: #999;
+            margin-top: 16px;
+            display: block;
+        }
+
+        .cta-badges-refined {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .cta-badge-refined {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #777;
+        }
+
+        .cta-badge-refined span {
+            color: var(--primary-orange);
+        }
+
+        @media (max-width: 768px) {
+            .cta-form-refined { flex-direction: column; border-radius: 24px; padding: 12px; gap: 12px; }
+            .cta-btn-refined { width: 100%; }
+            .cta-badges-refined { flex-direction: column; gap: 12px; align-items: center; }
+        }
+
+        /* 11. FOOTER REFINED */
+        .footer-refined {
+            background-color: var(--pure-white);
+            padding: 64px 40px 28px;
+            color: var(--text-main);
+            border-top: 1px solid #EEE;
+        }
+
+        .footer-grid-refined {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 48px;
+        }
+
+        .footer-brand-refined .footer-logo-refined {
+            font-size: 28px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand-refined .footer-logo-refined span {
+            color: var(--primary-orange);
+        }
+
+        .footer-tagline-refined {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.7;
+            max-width: 260px;
+            margin-bottom: 24px;
+        }
+
+        .footer-socials-refined {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social-link-refined {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #EEE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #AAA;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .footer-social-link-refined:hover {
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+            background: rgba(255, 107, 43, 0.05);
+        }
+
+        .footer-col-refined h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .footer-links-refined {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links-refined a {
+            font-size: 14px;
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links-refined a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-links-refined a.contact-cta {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom-refined {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid #EEE;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #AAA;
+        }
+
+        .footer-legal-refined {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal-refined a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal-refined a:hover {
+            color: #FFF;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid-refined { grid-template-columns: repeat(2, 1fr); gap: 60px; }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid-refined { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom-refined { flex-direction: column; gap: 20px; text-align: center; }
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid-refined { grid-template-columns: 1fr 1fr; gap: 60px; }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid-refined { grid-template-columns: 1fr; gap: 48px; }
+            .footer-bottom-refined { flex-direction: column; gap: 24px; text-align: center; }
+            .footer-legal-refined { justify-content: center; }
+        }
+
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        .hero-stats-refined {
+            width: 100%;
+            max-width: 1200px;
+            border-top: 1px solid rgba(255, 107, 43, 0.2);
+            padding-top: 48px;
+            margin-top: 64px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeIn 0.8s cubic-bezier(.16,1,.3,1) 1.1s forwards;
+            z-index: 2;
+        }
+
+        .stat-item-refined {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-num-refined {
+            font-family: 'Syne', sans-serif;
+            font-size: 44px;
+            font-weight: 800;
+            color: #FFF;
+            line-height: 1;
+        }
+
+        .stat-num-refined span {
+            color: #FF6B2B;
+        }
+
+        .stat-label-refined {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .scroll-indicator-refined {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .scroll-line-refined {
+            width: 1px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line-refined::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FF6B2B;
+            animation: scroll-anim 2s infinite cubic-bezier(.16,1,.3,1);
+        }
+
+        @keyframes scroll-anim {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .scroll-text-refined {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- SVG Noise Filter -->
+    <svg style="display:none;">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
+    </svg>
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- 1. NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="logo">SARS<span>.Global</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#work">Work</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="nav-cta magnetic">Book Free Consultation &rarr;</a>
+    </nav>
+
+    <main>
+        <!-- 2. HERO -->
+        <section class="hero" id="home">
+            <div class="noise-overlay" style="filter: url(#noiseFilter);"></div>
+            <div class="hero-glow-refined" id="hero-parallax-glow"></div>
+            
+            <div class="hero-badge-refined">
+                <span class="pulse-dot-refined"></span>
+                Full-Service Digital Growth Agency
+            </div>
+
+            <h1 class="hero-title-refined">
+            We don't just market brands. We scale them.
+            </h1>
+
+            <p class="hero-subheadline-refined">
+                SARS Global delivers data-driven digital marketing, UI/UX design, SEO, branding, and web development — engineered for measurable, compounding growth.
+            </p>
+
+            <div class="hero-cta-refined">
+                <a href="#contact" class="btn-primary-refined magnetic">Book a Free Consultation</a>
+                <a href="#work" class="btn-ghost-refined">
+                    View Our Work 
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.75 9H14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 3.75L14.25 9L9 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="hero-stats-refined">
+                <div class="stat-item-refined">
+                    <div class="stat-num-refined" data-target="200">0<span>+</span></div>
+                    <div class="stat-label-refined">Brands Scaled</div>
+                </div>
+                <div class="stat-item-refined">
+                    <div class="stat-num-refined" data-target="8">0<span>x</span></div>
+                    <div class="stat-label-refined">Avg. ROI Delivered</div>
+                </div>
+                <div class="stat-item-refined">
+                    <div class="stat-num-refined" data-target="98">0<span>%</span></div>
+                    <div class="stat-label-refined">Client Retention</div>
+                </div>
+                <div class="stat-item-refined">
+                    <div class="stat-num-refined" data-target="12">0<span>+</span></div>
+                    <div class="stat-label-refined">Years of Excellence</div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator-refined">
+                <span class="scroll-text-refined">Scroll</span>
+                <div class="scroll-line-refined"></div>
+            </div>
+        </section>
+
+        <!-- 3. MARQUEE STRIP -->
+        <section class="marquee-section-refined">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <span class="marquee-item-refined">Digital Marketing</span>
+                    <span class="marquee-item-refined">SEO & Content Strategy</span>
+                    <span class="marquee-item-refined">Web Development</span>
+                    <span class="marquee-item-refined">UI/UX Design</span>
+                    <span class="marquee-item-refined">Branding & Identity</span>
+                    <span class="marquee-item-refined">Performance Ads</span>
+                    <span class="marquee-item-refined">Social Media Management</span>
+                    <span class="marquee-item-refined">Ad Film Production</span>
+                    <span class="marquee-item-refined">Conversion Optimisation</span>
+                    <span class="marquee-item-refined">Email Marketing</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-group">
+                    <span class="marquee-item-refined">Digital Marketing</span>
+                    <span class="marquee-item-refined">SEO & Content Strategy</span>
+                    <span class="marquee-item-refined">Web Development</span>
+                    <span class="marquee-item-refined">UI/UX Design</span>
+                    <span class="marquee-item-refined">Branding & Identity</span>
+                    <span class="marquee-item-refined">Performance Ads</span>
+                    <span class="marquee-item-refined">Social Media Management</span>
+                    <span class="marquee-item-refined">Ad Film Production</span>
+                    <span class="marquee-item-refined">Conversion Optimisation</span>
+                    <span class="marquee-item-refined">Email Marketing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SERVICES -->
+        <section class="services-refined" id="services">
+            <div class="services-header-refined">
+                <div class="services-header-left reveal">
+                    <span class="services-label-refined">What We Do</span>
+                    <h2 class="services-heading-refined">
+                        Every service built 
+                        <span>for real results.</span>
+                    </h2>
+                </div>
+                <a href="#services" class="services-link-refined reveal">
+                    See all services 
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="services-grid-refined">
+                <!-- S1 -->
+                <div class="service-card-refined reveal">
+                    <span class="service-num-refined">01</span>
+                    <div class="service-icon-refined">🎯</div>
+                    <h3 class="service-name-refined">Digital Marketing</h3>
+                    <p class="service-desc-refined">Full-funnel campaigns across search, social, and programmatic. Every rupee tracked, every result measurable.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+                <!-- S2 -->
+                <div class="service-card-refined reveal reveal-delay-1">
+                    <span class="service-num-refined">02</span>
+                    <div class="service-icon-refined">🔍</div>
+                    <h3 class="service-name-refined">SEO & Content</h3>
+                    <p class="service-desc-refined">Organic growth that compounds. Technical SEO, content strategy, and link building that ranks and converts.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+                <!-- S3 -->
+                <div class="service-card-refined reveal reveal-delay-2">
+                    <span class="service-num-refined">03</span>
+                    <div class="service-icon-refined">💻</div>
+                    <h3 class="service-name-refined">Web Development</h3>
+                    <p class="service-desc-refined">Fast, beautiful, conversion-optimised websites. Custom builds and CMS that your team can manage.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+                <!-- S4 -->
+                <div class="service-card-refined reveal">
+                    <span class="service-num-refined">04</span>
+                    <div class="service-icon-refined">✦</div>
+                    <h3 class="service-name-refined">UI/UX Design</h3>
+                    <p class="service-desc-refined">Interfaces users love and businesses profit from. Research-led design that removes friction.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+                <!-- S5 -->
+                <div class="service-card-refined reveal reveal-delay-1">
+                    <span class="service-num-refined">05</span>
+                    <div class="service-icon-refined">🎨</div>
+                    <h3 class="service-name-refined">Branding & Identity</h3>
+                    <p class="service-desc-refined">Brand strategy to visual system. Brands that stick in minds and stand out in markets.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+                <!-- S6 -->
+                <div class="service-card-refined reveal reveal-delay-2">
+                    <span class="service-num-refined">06</span>
+                    <div class="service-icon-refined">🎬</div>
+                    <h3 class="service-name-refined">Ad Film Production</h3>
+                    <p class="service-desc-refined">Video content that stops the scroll. Concept to delivery — high-impact films for digital and broadcast.</p>
+                    <div class="service-arrow-refined">→</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CLIENT TRUST BAR -->
+        <section class="trust-section-refined">
+            <span class="trust-label-refined reveal">Trusted by 200+ brands across India and beyond</span>
+            <div class="marquee-track trust-marquee-track">
+                <div class="marquee-group">
+                    <span class="trust-logo-refined">TATA GROUP</span>
+                    <span class="trust-logo-refined">HDFC BANK</span>
+                    <span class="trust-logo-refined">RELIANCE</span>
+                    <span class="trust-logo-refined">AMAZON IN</span>
+                    <span class="trust-logo-refined">MYNTRA</span>
+                    <span class="trust-logo-refined">ZOMATO</span>
+                    <span class="trust-logo-refined">INFOSYS</span>
+                    <span class="trust-logo-refined">WIPRO</span>
+                    <span class="trust-logo-refined">MAHINDRA</span>
+                    <span class="trust-logo-refined">BAJAJ</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-group">
+                    <span class="trust-logo-refined">TATA GROUP</span>
+                    <span class="trust-logo-refined">HDFC BANK</span>
+                    <span class="trust-logo-refined">RELIANCE</span>
+                    <span class="trust-logo-refined">AMAZON IN</span>
+                    <span class="trust-logo-refined">MYNTRA</span>
+                    <span class="trust-logo-refined">ZOMATO</span>
+                    <span class="trust-logo-refined">INFOSYS</span>
+                    <span class="trust-logo-refined">WIPRO</span>
+                    <span class="trust-logo-refined">MAHINDRA</span>
+                    <span class="trust-logo-refined">BAJAJ</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="awards-strip-refined reveal">
+            <div class="award-item-refined"><i>🏆</i> Best Digital Agency 2024 — DMA India</div>
+            <div class="award-separator"></div>
+            <div class="award-item-refined"><i>⭐</i> Top SEO Agency — Clutch 2023</div>
+            <div class="award-separator"></div>
+            <div class="award-item-refined"><i>🎖</i> Google Premier Partner</div>
+            <div class="award-separator"></div>
+            <div class="award-item-refined"><i>✦</i> Meta Business Partner</div>
+            <div class="award-separator"></div>
+            <div class="award-item-refined"><i>💎</i> ISO 9001:2015 Certified</div>
+        </div>
+
+        <!-- 6. PROCESS -->
+        <section class="process-refined" id="process">
+            <div class="process-header-refined">
+                <span class="process-label-refined reveal">How We Work</span>
+                <h2 class="process-heading-refined reveal">
+                    A process that 
+                    <span>cannot be beaten.</span>
+                </h2>
+            </div>
+
+            <div class="process-grid-refined">
+                <!-- P1 -->
+                <div class="process-card-refined reveal">
+                    <div class="process-num-refined">01</div>
+                    <h3 class="process-title-refined">Discovery & Audit</h3>
+                    <p class="process-desc-refined">We dig deep into your business, competitors, and market. No generic playbook — every strategy starts with real understanding of your goals.</p>
+                </div>
+                <!-- P2 -->
+                <div class="process-card-refined reveal reveal-delay-1">
+                    <div class="process-num-refined">02</div>
+                    <h3 class="process-title-refined">Strategy & Roadmap</h3>
+                    <p class="process-desc-refined">A custom growth roadmap with clear milestones, KPIs, and budget allocation. You see exactly what we'll do and when.</p>
+                </div>
+                <!-- P3 -->
+                <div class="process-card-refined reveal reveal-delay-2">
+                    <div class="process-num-refined">03</div>
+                    <h3 class="process-title-refined">Execute & Optimise</h3>
+                    <p class="process-desc-refined">Rapid deployment, continuous A/B testing, weekly optimisation cycles. Speed without sacrificing quality or accuracy.</p>
+                </div>
+                <!-- P4 -->
+                <div class="process-card-refined reveal reveal-delay-1">
+                    <div class="process-num-refined">04</div>
+                    <h3 class="process-title-refined">Report & Scale</h3>
+                    <p class="process-desc-refined">Transparent weekly reporting. We double down on what works, cut what doesn't, then scale aggressively.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CASE STUDIES -->
+        <section class="cases-refined" id="work">
+            <div class="cases-header-refined">
+                <div class="cases-header-left reveal">
+                    <span class="cases-label-refined">Featured Work</span>
+                    <h2 class="cases-heading-refined">
+                        Results that 
+                        <span>speak for themselves.</span>
+                    </h2>
+                </div>
+                <a href="#work" class="cases-link-refined reveal">
+                    All case studies 
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="cases-grid-refined">
+                <!-- BIG CARD -->
+                <div class="case-card-refined big-card reveal">
+                    <span class="case-tag-refined">E-Commerce · SEO + Performance</span>
+                    <h3 class="case-title-refined">How we grew an e-commerce brand from ₹8L to ₹1.2Cr/month in 9 months</h3>
+                    <p class="case-desc-refined">A comprehensive digital overhaul focused on high-intent search capture and data-driven Facebook/Instagram ad scaling.</p>
+                    <div class="case-metrics-refined">
+                        <div class="metric-refined">
+                            <span class="metric-val">15x</span>
+                            <span class="metric-label">Revenue Growth</span>
+                        </div>
+                        <div class="metric-refined">
+                            <span class="metric-val">₹4.2Cr</span>
+                            <span class="metric-label">Total Revenue Generated</span>
+                        </div>
+                        <div class="metric-refined">
+                            <span class="metric-val">8.2%</span>
+                            <span class="metric-label">Conversion Rate</span>
+                        </div>
+                    </div>
+                    <a href="#" class="case-cta-refined">Read Case Study →</a>
+                </div>
+
+                <!-- SMALL CARD 1 -->
+                <div class="case-card-refined reveal">
+                    <span class="case-tag-refined">SaaS · UI/UX + Branding</span>
+                    <h3 class="case-title-refined">Redesigning a B2B SaaS that cut churn by 40%</h3>
+                    <p class="case-desc-refined">Streamlining complex workflows and modernising the visual language to drive higher retention.</p>
+                    <div class="case-metrics-refined">
+                        <div class="metric-refined">
+                            <span class="metric-val">40%</span>
+                            <span class="metric-label">Churn Reduction</span>
+                        </div>
+                        <div class="metric-refined">
+                            <span class="metric-val">2.5x</span>
+                            <span class="metric-label">User Engagement</span>
+                        </div>
+                    </div>
+                    <a href="#" class="case-cta-refined">Read Case Study →</a>
+                </div>
+
+                <!-- SMALL CARD 2 -->
+                <div class="case-card-refined reveal reveal-delay-1">
+                    <span class="case-tag-refined">Real Estate · Lead Gen</span>
+                    <h3 class="case-title-refined">₹45 cost-per-lead for a premium developer</h3>
+                    <p class="case-desc-refined">Aggressive lead qualification funnels combined with localized search dominance.</p>
+                    <div class="case-metrics-refined">
+                        <div class="metric-refined">
+                            <span class="metric-val">₹45</span>
+                            <span class="metric-label">Cost Per Lead</span>
+                        </div>
+                        <div class="metric-refined">
+                            <span class="metric-val">1200+</span>
+                            <span class="metric-label">Qualified Leads</span>
+                        </div>
+                    </div>
+                    <a href="#" class="case-cta-refined">Read Case Study →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. TESTIMONIALS -->
+        <section class="testimonials-refined">
+            <div class="testimonials-header-refined">
+                <span class="testimonial-label-refined reveal">Client Stories</span>
+                <h2 class="testimonial-heading-refined reveal">
+                    Why teams switch 
+                    <span>to SARS Global.</span>
+                </h2>
+            </div>
+
+            <div class="testimonials-grid-refined">
+                <!-- T1 -->
+                <div class="testimonial-card-refined reveal">
+                    <div class="testimonial-watermark-refined">"</div>
+                    <p class="testimonial-text-refined">SARS Global didn't just run our ads — they rebuilt our entire digital strategy. In 6 months we went from burning budget to 4x ROAS consistently. The transparency is unlike any agency I've worked with.</p>
+                    <div class="testimonial-author-refined">
+                        <div class="author-avatar-refined">RK</div>
+                        <div class="author-info-refined">
+                            <h4>Rahul Kapoor</h4>
+                            <p>Founder, D2C Fashion Brand</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- T2 -->
+                <div class="testimonial-card-refined reveal reveal-delay-1">
+                    <div class="testimonial-watermark-refined">"</div>
+                    <p class="testimonial-text-refined">The SEO team is genuinely exceptional. They took our blog from 2,000 to 180,000 monthly organic visitors in under a year. More importantly, those visitors actually convert. Real ROI, not vanity metrics.</p>
+                    <div class="testimonial-author-refined">
+                        <div class="author-avatar-refined">PM</div>
+                        <div class="author-info-refined">
+                            <h4>Priya Mehta</h4>
+                            <p>CMO, EdTech Startup</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- T3 -->
+                <div class="testimonial-card-refined reveal reveal-delay-2">
+                    <div class="testimonial-watermark-refined">"</div>
+                    <p class="testimonial-text-refined">We handed SARS our brand refresh and web rebuild simultaneously. The speed, the quality, the attention to every detail was impressive. Our new site converts at 3x our old one.</p>
+                    <div class="testimonial-author-refined">
+                        <div class="author-avatar-refined">AS</div>
+                        <div class="author-info-refined">
+                            <h4>Arjun Sharma</h4>
+                            <p>CEO, B2B SaaS Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. BLOG -->
+        <section class="blog-refined" id="blog">
+            <div class="blog-header-refined">
+                <div class="blog-header-left reveal">
+                    <span class="blog-label-refined">Latest Insights</span>
+                    <h2 class="blog-heading-refined">
+                        What we're 
+                        <span>thinking about.</span>
+                    </h2>
+                </div>
+                <a href="#blog" class="blog-link-refined reveal">
+                    All articles 
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16666 10H15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 4.16666L15.8333 10L10 15.8333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="blog-grid-refined">
+                <!-- B1 -->
+                <article class="blog-card-refined reveal">
+                    <span class="blog-tag-refined">SEO</span>
+                    <h3 class="blog-title-refined">Why most Indian brands are leaving 60% of their organic traffic on the table</h3>
+                    <p class="blog-excerpt-refined">The gap between top-ranking content and converting content is wider than you think. Here's how to close it.</p>
+                    <div class="blog-meta-refined">
+                        <span>May 2025</span>
+                        <span class="dot"></span>
+                        <span>6 min read</span>
+                    </div>
+                </article>
+                <!-- B2 -->
+                <article class="blog-card-refined reveal reveal-delay-1">
+                    <span class="blog-tag-refined">Performance Marketing</span>
+                    <h3 class="blog-title-refined">The Meta Ads playbook that's actually working in 2025</h3>
+                    <p class="blog-excerpt-refined">Platform changes, creative fatigue, audience shifts — here's what drives ROAS today and what died last year.</p>
+                    <div class="blog-meta-refined">
+                        <span>Apr 2025</span>
+                        <span class="dot"></span>
+                        <span>8 min read</span>
+                    </div>
+                </article>
+                <!-- B3 -->
+                <article class="blog-card-refined reveal reveal-delay-2">
+                    <span class="blog-tag-refined">UI/UX</span>
+                    <h3 class="blog-title-refined">5 UX patterns that silently kill your conversion rate</h3>
+                    <p class="blog-excerpt-refined">Small friction points compound. We analysed 50 client sites to find the most common conversion killers.</p>
+                    <div class="blog-meta-refined">
+                        <span>Apr 2025</span>
+                        <span class="dot"></span>
+                        <span>5 min read</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 10. CTA SECTION -->
+        <section class="cta-section-refined" id="contact">
+            <div class="cta-glow-refined"></div>
+            <div class="noise-overlay" style="filter: url(#noiseFilter);"></div>
+            
+            <div class="cta-content-refined">
+                <span class="cta-label-refined reveal">Let's Grow Together</span>
+                <h2 class="cta-title-refined reveal">
+                    Ready to build something great?
+                </h2>
+                
+                <p class="cta-subtext-refined reveal">Get a free consultation and strategy session — no obligations, no templated pitches. Just honest advice from people who've scaled 200+ brands.</p>
+
+                <div class="cta-form-refined reveal">
+                    <input type="email" class="cta-input-refined" placeholder="Enter your email address">
+                    <button class="cta-btn-refined">Book Free Call →</button>
+                </div>
+
+                <span class="cta-trust-note-refined reveal">+91 98765 43210 · hello@sarsglobal.com</span>
+
+                <div class="cta-badges-refined reveal">
+                    <div class="cta-badge-refined"><span>✓</span> Free 30-min strategy call</div>
+                    <div class="cta-badge-refined"><span>✓</span> No long-term contracts</div>
+                    <div class="cta-badge-refined"><span>✓</span> Results guaranteed</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 11. FOOTER -->
+    <footer class="footer-refined">
+        <div class="footer-grid-refined">
+            <div class="footer-brand-refined">
+                <a href="#" class="footer-logo-refined">SARS<span>.Global</span></a>
+                <p class="footer-tagline-refined">India's most results-driven digital agency. We build brands that grow — and keep growing.</p>
+                <div class="footer-socials-refined">
+                    <a href="#" class="footer-social-link-refined">in</a>
+                    <a href="#" class="footer-social-link-refined">tw</a>
+                    <a href="#" class="footer-social-link-refined">ig</a>
+                    <a href="#" class="footer-social-link-refined">yt</a>
+                </div>
+            </div>
+
+            <div class="footer-col-refined">
+                <h4>Services</h4>
+                <ul class="footer-links-refined">
+                    <li><a href="#services">Digital Marketing</a></li>
+                    <li><a href="#services">SEO & Content</a></li>
+                    <li><a href="#services">Web Development</a></li>
+                    <li><a href="#services">UI/UX Design</a></li>
+                    <li><a href="#services">Branding</a></li>
+                    <li><a href="#services">Ad Film Production</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-refined">
+                <h4>Company</h4>
+                <ul class="footer-links-refined">
+                    <li><a href="#home">About Us</a></li>
+                    <li><a href="#work">Our Work</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Awards</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-refined">
+                <h4>Contact</h4>
+                <ul class="footer-links-refined">
+                    <li><a href="mailto:hello@sarsglobal.com">hello@sarsglobal.com</a></li>
+                    <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                    <li><a href="#">Gurugram, Haryana, India</a></li>
+                    <li><a href="#contact" class="contact-cta">Book a Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom-refined">
+            <p>&copy; 2025 SARS Global. All rights reserved.</p>
+            <div class="footer-legal-refined">
+                <a href="#">Privacy Policy</a>
+                <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. CUSTOM CURSOR
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorRing = document.getElementById('cursor-ring');
+            let mouseX = 0, mouseY = 0;
+            let ringX = 0, ringY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Dot follows exactly
+                cursorDot.style.left = `${mouseX}px`;
+                cursorDot.style.top = `${mouseY}px`;
+            });
+
+            function animateCursor() {
+                // Ring follows with lerp (0.12 speed)
+                ringX += (mouseX - ringX) * 0.12;
+                ringY += (mouseY - ringY) * 0.12;
+
+                cursorRing.style.left = `${ringX}px`;
+                cursorRing.style.top = `${ringY}px`;
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Cursor Hover States
+            const interactiveElements = 'a, button, .service-card-refined, .testimonial-card-refined, .blog-card-refined, .case-card-refined, .process-card-refined, .magnetic, .marquee-item-refined';
+            document.querySelectorAll(interactiveElements).forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.style.width = '18px';
+                    cursorDot.style.height = '18px';
+                    cursorRing.style.width = '56px';
+                    cursorRing.style.height = '56px';
+                    cursorRing.style.opacity = '0.5';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.style.width = '10px';
+                    cursorDot.style.height = '10px';
+                    cursorRing.style.width = '36px';
+                    cursorRing.style.height = '36px';
+                    cursorRing.style.opacity = '1';
+                });
+            });
+
+            // 2. STICKY NAVIGATION
+            const nav = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 60) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // 3. SCROLL REVEAL
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1, 
+                rootMargin: '0px 0px -60px 0px' 
+            });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // 4. COUNTER ANIMATION
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.getAttribute('data-target'));
+                        const suffixElement = entry.target.querySelector('span');
+                        const suffix = suffixElement ? suffixElement.innerText : '';
+                        let start = 0;
+                        const duration = 1800;
+                        const startTime = performance.now();
+
+                        function update(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+                            
+                            const current = Math.floor(ease * target);
+                            entry.target.innerHTML = `${current}<span>${suffix}</span>`;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(update);
+                            }
+                        }
+                        requestAnimationFrame(update);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+            // 5. MAGNETIC BUTTONS
+            document.querySelectorAll('.magnetic').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - (rect.left + rect.width / 2);
+                    const y = e.clientY - (rect.top + rect.height / 2);
+                    
+                    btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transition = 'transform 0.4s cubic-bezier(.16,1,.3,1)';
+                    btn.style.transform = 'translate(0,0)';
+                    setTimeout(() => btn.style.transition = '', 400);
+                });
+            });
+
+            // 6. HERO PARALLAX GLOW
+            const heroGlow = document.getElementById('hero-parallax-glow');
+            if (heroGlow) {
+                window.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth) - 0.5;
+                    const y = (e.clientY / window.innerHeight) - 0.5;
+                    
+                    requestAnimationFrame(() => {
+                        heroGlow.style.transform = `translate(calc(-50% + ${x * 40}px), calc(-50% + ${y * 30}px))`;
+                    });
+                });
+            }
+
+            // 7. MARQUEE PAUSE ON HOVER
+            document.querySelectorAll('.marquee-track').forEach(track => {
+                track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
+                track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+            });
+        });
+    </script>
+</body>
+</html>
