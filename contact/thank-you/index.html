@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | SARS Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF6B2B;
+            --text-main: #1A1A1A;
+            --off-white: #F9F9F9;
+            --pure-white: #FFFFFF;
+            --cream: #FFFDFB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; }
+        body { background-color: var(--pure-white); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* NAV (MINIMAL) */
+        nav { padding: 40px 80px; text-align: center; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary-orange); }
+
+        /* SUCCESS SECTION */
+        .success-section { padding: 60px 40px 100px; text-align: center; max-width: 800px; margin: 0 auto; }
+        
+        /* CHECKMARK ANIMATION */
+        .checkmark-wrapper { width: 120px; height: 120px; margin: 0 auto 40px; }
+        .checkmark { width: 120px; height: 120px; border-radius: 50%; display: block; stroke-width: 4; stroke: var(--primary-orange); stroke-miterlimit: 10; box-shadow: inset 0px 0px 0px var(--primary-orange); animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
+        .checkmark__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 4; stroke-miterlimit: 10; stroke: var(--primary-orange); fill: none; animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+        .checkmark__check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards; }
+        @keyframes stroke { 100% { stroke-dashoffset: 0; } }
+        @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 60px var(--pure-white); } }
+
+        .success-section h1 { font-size: 48px; letter-spacing: -2px; margin-bottom: 10px; }
+        .success-section p { font-size: 18px; color: #666; margin-bottom: 60px; }
+
+        /* TIMELINE */
+        .next-steps { margin-top: 40px; text-align: left; background: var(--off-white); padding: 40px; border-radius: 24px; }
+        .next-steps h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 30px; text-align: center; }
+        .mini-timeline { display: flex; justify-content: space-between; position: relative; }
+        .mini-timeline::before { content: ''; position: absolute; top: 12px; left: 0; width: 100%; height: 1px; background: #DDD; z-index: 1; }
+        .step { position: relative; z-index: 2; text-align: center; width: 30%; }
+        .step-dot { width: 24px; height: 24px; background: var(--primary-orange); border-radius: 50%; margin: 0 auto 15px; border: 4px solid var(--off-white); }
+        .step h4 { font-size: 15px; margin-bottom: 5px; }
+        .step p { font-size: 12px; color: #999; margin: 0; }
+
+        /* RESOURCE CARDS */
+        .resources { padding: 80px 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .res-card { background: #FFF; border: 1px solid #EEE; padding: 40px; border-radius: 24px; text-align: center; transition: 0.4s; text-decoration: none; color: inherit; }
+        .res-card:hover { border-color: var(--primary-orange); transform: translateY(-10px); }
+        .res-card h4 { font-size: 18px; margin-bottom: 10px; }
+        .res-card p { font-size: 14px; color: #888; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(.16,1,.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .mini-timeline { flex-direction: column; gap: 40px; }
+            .mini-timeline::before { left: 12px; width: 1px; height: 100%; }
+            .step { width: 100%; text-align: left; display: flex; gap: 20px; align-items: flex-start; }
+            .step-dot { margin: 0; }
+            .resources { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html" class="logo">SARS<span>.Global</span></a>
+    </nav>
+
+    <main>
+        <section class="success-section">
+            <div class="checkmark-wrapper">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h1 class="reveal">Request Received.</h1>
+            <p class="reveal">We'll be in touch within 4 business hours.</p>
+
+            <div class="next-steps reveal" style="transition-delay: 0.2s;">
+                <h3>Here's what happens next:</h3>
+                <div class="mini-timeline">
+                    <div class="step">
+                        <div class="step-dot"></div>
+                        <h4>Initial Review</h4>
+                        <p>Our strategy lead reviews your goals and audit data.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-dot"></div>
+                        <h4>Expert Matching</h4>
+                        <p>We match your needs with the right domain specialists.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-dot"></div>
+                        <h4>Intro Call</h4>
+                        <p>A member of our team will reach out to schedule your session.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources">
+            <a href="../../insights/index.html" class="res-card reveal" style="transition-delay: 0.4s;">
+                <h4>Read our latest blog</h4>
+                <p>Stay ahead with our latest growth insights.</p>
+            </a>
+            <a href="../../work/index.html" class="res-card reveal" style="transition-delay: 0.5s;">
+                <h4>View case studies</h4>
+                <p>See how we've scaled similar brands.</p>
+            </a>
+            <a href="https://linkedin.com" class="res-card reveal" style="transition-delay: 0.6s;">
+                <h4>Follow on LinkedIn</h4>
+                <p>Join our community of industry leaders.</p>
+            </a>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

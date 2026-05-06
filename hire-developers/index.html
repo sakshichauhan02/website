@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Dedicated Developers | Deployed in 72h | SARS Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF6B2B;
+            --text-main: #1A1A1A;
+            --off-white: #F9F9F9;
+            --pure-white: #FFFFFF;
+            --cream: #FFFDFB;
+            --near-black: #111111;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; }
+        body { background-color: var(--pure-white); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* CURSOR */
+        #cursor-dot { width: 10px; height: 10px; background: var(--primary-orange); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: width 0.3s, height 0.3s; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(255, 107, 43, 0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: all 0.15s ease-out; transform: translate(-50%, -50%); }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
+        nav.scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); padding: 18px 40px; border-bottom: 1px solid #EEE; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary-orange); }
+
+        /* 1. HERO */
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 150px 40px 100px; background: var(--near-black); color: #FFF; position: relative; overflow: hidden; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255, 107, 43, 0.4); background: rgba(255, 107, 43, 0.1); padding: 8px 20px; border-radius: 100px; font-size: 11px; color: var(--primary-orange); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        .hero-title { font-size: clamp(40px, 8vw, 90px); line-height: 1.0; letter-spacing: -3px; margin-bottom: 30px; max-width: 1000px; }
+        .hero-sub { font-size: 20px; color: #888; max-width: 600px; margin-bottom: 50px; }
+        .hero-cta-group { display: flex; gap: 20px; }
+        .btn { padding: 20px 40px; border-radius: 100px; text-decoration: none; font-weight: 700; transition: 0.3s; font-size: 15px; }
+        .btn-primary { background: var(--primary-orange); color: #FFF; }
+        .btn-outline { border: 1px solid #444; color: #FFF; }
+        .btn-outline:hover { background: #FFF; color: var(--near-black); border-color: #FFF; }
+
+        /* 2. ROLE GRID */
+        .roles { padding: 140px 80px; background: #FFF; }
+        .roles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1400px; margin: 60px auto 0; }
+        .role-tile { background: var(--off-white); padding: 40px; border-radius: 24px; border: 1px solid #EEE; transition: 0.5s cubic-bezier(.16,1,.3,1); cursor: pointer; }
+        .role-tile:hover { flex: 1.2; border-color: var(--primary-orange); background: var(--cream); transform: translateY(-10px); }
+        .role-icon { font-size: 24px; margin-bottom: 20px; }
+        .role-name { font-size: 20px; font-weight: 600; }
+
+        /* 3. ENGAGEMENT MODELS */
+        .engagement { padding: 140px 80px; background: var(--off-white); }
+        .engagement-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1400px; margin: 60px auto 0; }
+        .eng-card { background: #FFF; padding: 40px; border-radius: 32px; border: 1px solid #EEE; transition: 0.4s; }
+        .eng-card:hover { border-color: var(--primary-orange); }
+        .eng-card h4 { font-size: 22px; margin-bottom: 15px; }
+        .eng-meta { font-size: 13px; color: #999; margin-bottom: 20px; }
+        .eng-meta b { color: var(--text-main); }
+        .eng-benefit { font-size: 14px; color: #666; margin-bottom: 30px; }
+
+        /* 4. PROCESS */
+        .process-hiring { padding: 140px 80px; text-align: center; }
+        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 80px; position: relative; }
+        .step-item { position: relative; z-index: 2; }
+        .step-num { width: 50px; height: 50px; background: var(--primary-orange); color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: 700; font-family: 'Outfit'; }
+        .step-item h4 { font-size: 18px; margin-bottom: 10px; }
+        .step-item p { font-size: 13px; color: #888; }
+
+        /* 5. COST COMPARISON */
+        .cost-section { padding: 140px 80px; background: var(--off-white); }
+        .table-container { max-width: 1100px; margin: 60px auto 0; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; background: #FFF; border-radius: 24px; overflow: hidden; }
+        th, td { padding: 30px; text-align: left; border-bottom: 1px solid #EEE; }
+        th { background: #F5F5F5; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+        .highlight-col { background: rgba(255,107,43,0.03); border-left: 2px solid var(--primary-orange); border-right: 2px solid var(--primary-orange); }
+        .highlight-header { background: var(--primary-orange) !important; color: #FFF !important; }
+        .sars-text { color: var(--primary-orange); font-weight: 700; }
+
+        /* 6. PROFILES */
+        .profiles { padding: 140px 80px; background: #FFF; text-align: center; }
+        .profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 60px auto 0; }
+        .profile-card { border: 1px solid #EEE; border-radius: 24px; padding: 40px; text-align: left; transition: 0.4s; }
+        .profile-card:hover { border-color: var(--primary-orange); }
+        .profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .role-badge { background: var(--off-white); padding: 6px 15px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--primary-orange); }
+        .status-dot { width: 10px; height: 10px; background: #22C55E; border-radius: 50%; }
+        .skills-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .pill { background: #F5F5F5; padding: 4px 12px; border-radius: 100px; font-size: 11px; color: #666; }
+
+        /* 7. CTA FORM */
+        .hiring-cta { padding: 140px 80px; background: var(--near-black); color: #FFF; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .form-box { background: #FFF; padding: 50px; border-radius: 32px; color: var(--text-main); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: #888; }
+        .form-group input, .form-group select { width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #DDD; outline: none; }
+        .form-group input:focus { border-color: var(--primary-orange); }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(.16,1,.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero, .roles, .engagement, .process-hiring, .cost-section, .profiles, .hiring-cta { padding: 80px 40px; }
+            .roles-grid, .engagement-grid, .process-steps, .profile-grid, .hiring-cta { grid-template-columns: 1fr; }
+            .hero-cta-group { flex-direction: column; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-dot"></div><div id="cursor-ring"></div>
+    
+    <nav id="navbar">
+        <a href="../index.html" class="logo">SARS<span>.Global</span></a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../services/ai-development/index.html">AI Development</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. HERO -->
+        <section class="hero">
+            <div class="hero-badge reveal"><div></div>Instant Scaling</div>
+            <h1 class="hero-title reveal">World-class developers. <br><span>Deployed in 72 hours.</span></h1>
+            <p class="hero-sub reveal">Hire dedicated developers from India's top 1% talent pool. Vetted for technical excellence and communication skills.</p>
+            <div class="hero-cta-group reveal">
+                <a href="#hire-now" class="btn btn-primary">Hire Developers Now</a>
+                <a href="#pricing" class="btn btn-outline">View Pricing Matrix</a>
+            </div>
+        </section>
+
+        <!-- 2. ROLE GRID -->
+        <section class="roles">
+            <h2 style="font-size: 48px; text-align: center;" class="reveal">Roles we specialize in.</h2>
+            <div class="roles-grid">
+                <div class="role-tile reveal"><div class="role-icon">⚛️</div><div class="role-name">Frontend</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.1s;"><div class="role-icon">🛡️</div><div class="role-name">Backend</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.2s;"><div class="role-icon">🏗️</div><div class="role-name">Full Stack</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.3s;"><div class="role-icon">📱</div><div class="role-name">Mobile App</div></div>
+                <div class="role-tile reveal"><div class="role-icon">🤖</div><div class="role-name">AI / ML</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.1s;"><div class="role-icon">♾️</div><div class="role-name">DevOps</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.2s;"><div class="role-icon">✦</div><div class="role-name">UI / UX</div></div>
+                <div class="role-tile reveal" style="transition-delay: 0.3s;"><div class="role-icon">🧪</div><div class="role-name">QA / Testing</div></div>
+            </div>
+        </section>
+
+        <!-- 3. ENGAGEMENT MODELS -->
+        <section class="engagement">
+            <h2 style="font-size: 48px; text-align: center;" class="reveal">Flexible Engagement.</h2>
+            <div class="engagement-grid">
+                <div class="eng-card reveal">
+                    <h4>Dedicated Developer</h4>
+                    <p class="eng-meta">Best for: <b>Long-term projects</b></p>
+                    <p class="eng-benefit">Full-time dev reporting directly to you. Your own team member, managed by us.</p>
+                    <a href="#hire-now" style="color: var(--primary-orange); text-decoration: none; font-weight: 700; font-size: 14px;">Select Model &rarr;</a>
+                </div>
+                <div class="eng-card reveal" style="transition-delay: 0.1s;">
+                    <h4>Staff Augmentation</h4>
+                    <p class="eng-meta">Best for: <b>Filling skill gaps</b></p>
+                    <p class="eng-benefit">Add specialized talent to your existing team to hit deadlines or solve complex problems.</p>
+                    <a href="#hire-now" style="color: var(--primary-orange); text-decoration: none; font-weight: 700; font-size: 14px;">Select Model &rarr;</a>
+                </div>
+                <div class="eng-card reveal" style="transition-delay: 0.2s;">
+                    <h4>Offshore Team</h4>
+                    <p class="eng-meta">Best for: <b>Product building</b></p>
+                    <p class="eng-benefit">A full squad with PM, Devs, and QA. We take care of the entire engineering cycle.</p>
+                    <a href="#hire-now" style="color: var(--primary-orange); text-decoration: none; font-weight: 700; font-size: 14px;">Select Model &rarr;</a>
+                </div>
+                <div class="eng-card reveal" style="transition-delay: 0.3s;">
+                    <h4>Project-Based</h4>
+                    <p class="eng-meta">Best for: <b>Fixed scope</b></p>
+                    <p class="eng-benefit">Fixed cost delivery with clear milestones and defined outcomes.</p>
+                    <a href="#hire-now" style="color: var(--primary-orange); text-decoration: none; font-weight: 700; font-size: 14px;">Select Model &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HIRING PROCESS -->
+        <section class="process-hiring">
+            <h2 style="font-size: 48px;" class="reveal">The 72-Hour Pipeline.</h2>
+            <div class="process-steps">
+                <div class="step-item reveal">
+                    <div class="step-num">01</div>
+                    <h4>Requirements</h4>
+                    <p>Share your stack and role requirements with our account managers.</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay: 0.1s;">
+                    <div class="step-num">02</div>
+                    <h4>Talent Match</h4>
+                    <p>We shortlist 2-3 vetted profiles from our bench within 24 hours.</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay: 0.2s;">
+                    <div class="step-num">03</div>
+                    <h4>Interview</h4>
+                    <p>Direct technical interview with the candidates to verify the fit.</p>
+                </div>
+                <div class="step-item reveal" style="transition-delay: 0.3s;">
+                    <div class="step-num">04</div>
+                    <h4>Onboard</h4>
+                    <p>Sign the MSA and get the developer started on your Slack/Jira.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. COST COMPARISON -->
+        <section class="cost-section" id="pricing">
+            <h2 style="font-size: 48px; text-align: center;" class="reveal">Why Hire From India?</h2>
+            <div class="table-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>In-House (US/EU)</th>
+                            <th>Freelancer</th>
+                            <th class="highlight-header">SARS Global</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cost / Month</td><td>$8k - $15k</td><td>$3k - $7k</td><td class="highlight-col sars-text">$2.5k - $4.5k</td></tr>
+                        <tr><td>Setup Time</td><td>30 - 60 Days</td><td>2 - 5 Days</td><td class="highlight-col sars-text">72 Hours</td></tr>
+                        <tr><td>Vetting</td><td>High Effort</td><td>Variable</td><td class="highlight-col sars-text">100% Pre-Vetted</td></tr>
+                        <tr><td>Management</td><td>Internal HR</td><td>Manual</td><td class="highlight-col sars-text">Account Manager</td></tr>
+                        <tr><td>IP Protection</td><td>Local Laws</td><td>Risky</td><td class="highlight-col sars-text">Legal MSA / IP Secure</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. PROFILES -->
+        <section class="profiles">
+            <h2 style="font-size: 48px;" class="reveal">The Talent Bench.</h2>
+            <div class="profile-grid">
+                <div class="profile-card reveal">
+                    <div class="profile-header">
+                        <span class="role-badge">Senior React Dev</span>
+                        <div class="status-dot"></div>
+                    </div>
+                    <h4>Profile ID: SG-2401</h4>
+                    <div class="skills-pills">
+                        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">AWS</span>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">6+ Years Exp | Native English | Immediate Joining</p>
+                </div>
+                <div class="profile-card reveal" style="transition-delay: 0.1s;">
+                    <div class="profile-header">
+                        <span class="role-badge">Python / AI Expert</span>
+                        <div class="status-dot"></div>
+                    </div>
+                    <h4>Profile ID: SG-2182</h4>
+                    <div class="skills-pills">
+                        <span class="pill">Django</span><span class="pill">PyTorch</span><span class="pill">FastAPI</span><span class="pill">OpenAI</span>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">5 Years Exp | Masters in CS | Avail: 40h/week</p>
+                </div>
+                <div class="profile-card reveal" style="transition-delay: 0.2s;">
+                    <div class="profile-header">
+                        <span class="role-badge">Full Stack (MERN)</span>
+                        <div class="status-dot"></div>
+                    </div>
+                    <h4>Profile ID: SG-3021</h4>
+                    <div class="skills-pills">
+                        <span class="pill">Node.js</span><span class="pill">MongoDB</span><span class="pill">React Native</span><span class="pill">Docker</span>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">4 Years Exp | Mobile Expert | Portfolio: 15+ Apps</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CTA FORM -->
+        <section class="hiring-cta reveal" id="hire-now">
+            <div>
+                <h2 style="font-size: 64px; line-height: 1.0; letter-spacing: -3px;">Ready to scale <br><span>your team?</span></h2>
+                <p style="margin-top: 30px; font-size: 18px; opacity: 0.7;">Fill out the form and our account manager will send you a curated list of profiles within 4 hours.</p>
+            </div>
+            <div class="form-box">
+                <form>
+                    <div class="form-group"><label>I need a...</label><select><option>Frontend Developer</option><option>Backend Developer</option><option>Full Stack Developer</option><option>AI Engineer</option></select></div>
+                    <div class="form-group"><label>Work Email</label><input type="email" placeholder="you@company.com"></div>
+                    <div class="form-group"><label>Budget Range</label><select><option>$2k - $4k / mo</option><option>$4k - $6k / mo</option><option>$6k+ / mo</option></select></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Get Curated Profiles &rarr;</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dot = document.getElementById('cursor-dot');
+            const ring = document.getElementById('cursor-ring');
+            let mx=0, my=0, rx=0, ry=0;
+            window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+            function anim() { rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); }
+            anim();
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

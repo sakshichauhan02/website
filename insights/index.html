@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Strategy & Tech Trends | SARS Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF6B2B;
+            --text-main: #1A1A1A;
+            --off-white: #F9F9F9;
+            --pure-white: #FFFFFF;
+            --cream: #FFFDFB;
+            --near-black: #111111;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; }
+        body { background-color: var(--pure-white); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* CURSOR */
+        #cursor-dot { width: 10px; height: 10px; background: var(--primary-orange); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: width 0.3s, height 0.3s; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(255, 107, 43, 0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: all 0.15s ease-out; transform: translate(-50%, -50%); }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
+        nav.scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); padding: 18px 40px; border-bottom: 1px solid #EEE; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary-orange); }
+
+        /* HERO */
+        .hero { padding: 180px 80px 80px; background: var(--cream); text-align: center; }
+        .hero h1 { font-size: 72px; letter-spacing: -3px; margin-bottom: 20px; line-height: 1.0; }
+
+        /* CATEGORY FILTER */
+        .filter-bar { display: flex; justify-content: center; gap: 12px; margin: 40px 0; flex-wrap: wrap; }
+        .filter-pill { padding: 10px 24px; border-radius: 100px; border: 1px solid #DDD; background: #FFF; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.3s; }
+        .filter-pill.active { background: var(--primary-orange); border-color: var(--primary-orange); color: #FFF; }
+
+        /* FEATURED POST */
+        .featured-section { padding: 40px 80px; max-width: 1400px; margin: 0 auto; }
+        .featured-card { background: #FFF; border: 1px solid #EEE; border-radius: 32px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; cursor: pointer; transition: 0.4s; }
+        .featured-card:hover { border-color: var(--primary-orange); transform: translateY(-5px); }
+        .featured-visual { background: linear-gradient(135deg, #FF6B2B33, #FF6B2B11); min-height: 400px; }
+        .featured-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .featured-tag { color: var(--primary-orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+        .featured-title { font-size: 36px; line-height: 1.2; margin-bottom: 20px; }
+        .featured-excerpt { color: #666; margin-bottom: 30px; }
+
+        /* ARTICLE GRID */
+        .article-grid { padding: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .article-card { background: #FFF; border: 1px solid #EEE; border-radius: 24px; padding: 40px; transition: 0.4s; position: relative; cursor: pointer; }
+        .article-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 0; background: var(--primary-orange); transition: 0.3s; border-radius: 24px 24px 0 0; }
+        .article-card:hover { border-color: var(--primary-orange); transform: translateY(-10px); }
+        .article-card:hover::before { height: 4px; }
+        .article-tag { font-size: 10px; font-weight: 700; color: var(--primary-orange); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; display: block; }
+        .article-title { font-size: 22px; margin-bottom: 15px; line-height: 1.3; }
+        .article-excerpt { font-size: 14px; color: #666; margin-bottom: 30px; }
+        .article-footer { display: flex; align-items: center; gap: 15px; margin-top: auto; padding-top: 20px; border-top: 1px solid #F5F5F5; }
+        .author-avatar { width: 32px; height: 32px; background: #EEE; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #999; }
+        .article-meta { font-size: 11px; color: #999; }
+
+        /* NEWSLETTER */
+        .newsletter-strip { background: var(--near-black); padding: 80px; text-align: center; color: #FFF; }
+        .newsletter-container { max-width: 600px; margin: 40px auto 0; display: flex; gap: 15px; }
+        .newsletter-container input { flex: 1; padding: 18px 25px; border-radius: 100px; border: 1px solid #333; background: #222; color: #FFF; outline: none; }
+        .newsletter-container button { padding: 18px 40px; border-radius: 100px; background: var(--primary-orange); color: #FFF; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .newsletter-container button:hover { transform: scale(1.05); }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(.16,1,.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero, .featured-section, .article-grid, .newsletter-strip { padding: 80px 40px; }
+            .featured-card { grid-template-columns: 1fr; }
+            .article-grid { grid-template-columns: 1fr; }
+            .newsletter-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-dot"></div><div id="cursor-ring"></div>
+    
+    <nav id="navbar">
+        <a href="../index.html" class="logo">SARS<span>.Global</span></a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../portfolio/index.html">Portfolio</a>
+            <a href="../work/index.html">Case Studies</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1 class="reveal">Insights that actually <br><span>move the needle.</span></h1>
+            
+            <div class="filter-bar reveal">
+                <button class="filter-pill active">All</button>
+                <button class="filter-pill">AI</button>
+                <button class="filter-pill">Digital Marketing</button>
+                <button class="filter-pill">UI/UX</button>
+                <button class="filter-pill">Software Dev</button>
+                <button class="filter-pill">Startup</button>
+                <button class="filter-pill">Tech Trends</button>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="featured-card reveal">
+                <div class="featured-visual"></div>
+                <div class="featured-content">
+                    <span class="featured-tag">Tech Trends</span>
+                    <h2 class="featured-title">The Future of Multi-Agent AI Systems in Enterprise Growth.</h2>
+                    <p class="featured-excerpt">How proprietary AI agents are moving beyond chat to autonomous execution and unit-economic optimization.</p>
+                    <a href="#" style="color: var(--primary-orange); text-decoration: none; font-weight: 700;">Read Analysis &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="article-grid">
+            <!-- Article 1 -->
+            <div class="article-card reveal">
+                <span class="article-tag">Digital Marketing</span>
+                <h3 class="article-title">ROAS vs POAS: Why Profit-On-Ad-Spend is the only metric that matters in 2025.</h3>
+                <p class="article-excerpt">Stop chasing vanity revenue. Learn how to optimize your marketing for actual bottom-line profitability.</p>
+                <div class="article-footer">
+                    <div class="author-avatar">RK</div>
+                    <div class="article-meta">
+                        <p><b>Rohit Khanna</b></p>
+                        <p>Oct 12 · 6 min read</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="article-card reveal" style="transition-delay: 0.1s;">
+                <span class="article-tag">UI/UX</span>
+                <h3 class="article-title">The Psychology of Friction: Using Cognitive Load to Drive Conversions.</h3>
+                <p class="article-excerpt">Why faster isn't always better. How strategic friction can build trust and improve lead quality.</p>
+                <div class="article-footer">
+                    <div class="author-avatar">AS</div>
+                    <div class="article-meta">
+                        <p><b>Ananya Singh</b></p>
+                        <p>Oct 08 · 4 min read</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="article-card reveal" style="transition-delay: 0.2s;">
+                <span class="article-tag">Startup</span>
+                <h3 class="article-title">Scaling to ₹1Cr MRR: The Growth Framework for Bootstrapped SaaS.</h3>
+                <p class="article-excerpt">A deep dive into the exact funnel engineering we used to scale 3 Indian SaaS brands this year.</p>
+                <div class="article-footer">
+                    <div class="author-avatar">VM</div>
+                    <div class="article-meta">
+                        <p><b>Vikram Mehta</b></p>
+                        <p>Sep 28 · 8 min read</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-strip reveal">
+            <h2 style="font-size: 32px;">Get insights delivered weekly.</h2>
+            <p style="color: #888; margin-top: 10px;">The latest in tech, marketing, and growth strategy, directly to your inbox.</p>
+            <div class="newsletter-container">
+                <input type="email" placeholder="you@company.com">
+                <button>Subscribe Now</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cursor
+            const dot = document.getElementById('cursor-dot');
+            const ring = document.getElementById('cursor-ring');
+            let mx=0, my=0, rx=0, ry=0;
+            window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+            function anim() { rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); }
+            anim();
+
+            // Reveal
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Development & Engineering | SARS Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF6B2B;
+            --text-main: #1A1A1A;
+            --off-white: #F9F9F9;
+            --pure-white: #FFFFFF;
+            --cream: #FFFDFB;
+            --near-black: #111111;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 600; }
+        body { background-color: var(--pure-white); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* CURSOR */
+        #cursor-dot { width: 10px; height: 10px; background: var(--primary-orange); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: width 0.3s, height 0.3s; transform: translate(-50%, -50%); }
+        #cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(255, 107, 43, 0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; transition: all 0.15s ease-out; transform: translate(-50%, -50%); }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
+        nav.scrolled { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); padding: 18px 40px; border-bottom: 1px solid #EEE; }
+        .logo { font-size: 22px; font-weight: 700; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary-orange); }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 500; }
+
+        /* 1. HERO (Dark/AI themed) */
+        .hero { min-height: 100vh; background: var(--near-black); color: #FFF; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 100px 40px; position: relative; overflow: hidden; }
+        .neural-network-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.3; z-index: 0; pointer-events: none; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255, 107, 43, 0.4); background: rgba(255, 107, 43, 0.1); padding: 8px 20px; border-radius: 100px; font-size: 11px; color: var(--primary-orange); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; z-index: 1; }
+        .hero-title { font-size: clamp(40px, 8vw, 90px); line-height: 1.0; letter-spacing: -3px; margin-bottom: 40px; max-width: 1000px; z-index: 1; }
+        .hero-title span { color: var(--primary-orange); }
+
+        /* 2. AI SERVICES GRID */
+        .services { padding: 140px 80px; background: #FFF; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; }
+        .service-tile { background: var(--off-white); padding: 60px 40px; border-radius: 32px; transition: 0.5s cubic-bezier(.16,1,.3,1); cursor: pointer; border: 1px solid #EEE; overflow: hidden; height: 360px; display: flex; flex-direction: column; }
+        .service-tile:hover { flex: 1.2; background: var(--cream); border-color: var(--primary-orange); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        .tile-icon { font-size: 32px; margin-bottom: 20px; }
+        .tile-name { font-size: 24px; margin-bottom: 15px; }
+        .tile-desc { font-size: 15px; color: #666; opacity: 0; transform: translateY(20px); transition: 0.4s; }
+        .service-tile:hover .tile-desc { opacity: 1; transform: translateY(0); }
+
+        /* 3. USE CASE MATRIX */
+        .matrix-section { padding: 140px 80px; background: var(--off-white); }
+        .matrix-container { max-width: 1200px; margin: 0 auto; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; background: #FFF; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+        th, td { padding: 25px; text-align: center; border-bottom: 1px solid #EEE; }
+        th { background: var(--near-black); color: #FFF; font-family: 'Outfit'; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        td:first-child { text-align: left; font-weight: 600; padding-left: 40px; background: #FAFAFA; width: 200px; }
+        .check { color: var(--primary-orange); font-weight: 900; font-size: 20px; }
+        .dash { color: #DDD; }
+
+        /* 4. TECH STACK */
+        .tech-stack { padding: 100px 80px; text-align: center; }
+        .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 60px; }
+        .tech-item { font-size: 18px; font-weight: 600; color: #999; transition: 0.3s; }
+        .tech-item:hover { color: var(--primary-orange); transform: translateY(-5px); }
+
+        /* 5. ROI CALCULATOR */
+        .roi-section { padding: 140px 80px; background: var(--near-black); color: #FFF; text-align: center; }
+        .roi-card { max-width: 800px; margin: 60px auto; background: #222; padding: 60px; border-radius: 40px; border: 1px solid #333; }
+        .roi-slider-container { margin: 40px 0; }
+        input[type=range] { width: 100%; height: 6px; background: #444; border-radius: 5px; outline: none; appearance: none; -webkit-appearance: none; }
+        input[type=range]::-webkit-slider-thumb { appearance: none; width: 24px; height: 24px; background: var(--primary-orange); border-radius: 50%; cursor: pointer; border: 4px solid #FFF; }
+        .roi-output { font-size: 48px; color: var(--primary-orange); font-family: 'Outfit'; margin-top: 40px; font-weight: 700; }
+        .roi-sub-output { font-size: 18px; color: #888; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(.16,1,.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .hero, .services, .matrix-section, .roi-section { padding: 80px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-dot"></div><div id="cursor-ring"></div>
+    
+    <nav id="navbar">
+        <a href="../../index.html" class="logo">SARS<span>.Global</span></a>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../index.html#services">Services</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. HERO -->
+        <section class="hero">
+            <svg class="neural-network-bg" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                <g id="connections" stroke="rgba(255,107,43,0.2)" stroke-width="1"></g>
+                <g id="nodes"></g>
+            </svg>
+            <div class="hero-badge reveal"><div></div>Intelligence Engineered</div>
+            <h1 class="hero-title reveal">We don't just integrate AI. <br><span>We build it.</span></h1>
+            <div class="reveal">
+                <a href="#contact" style="display: inline-block; background: var(--primary-orange); color: #FFF; padding: 20px 50px; border-radius: 100px; text-decoration: none; font-weight: 700;">Explore AI for My Business</a>
+            </div>
+        </section>
+
+        <!-- 2. AI SERVICES GRID -->
+        <section class="services">
+            <h2 style="font-size: 48px; margin-bottom: 60px; text-align: center;" class="reveal">Proprietary AI Solutions.</h2>
+            <div class="services-grid">
+                <div class="service-tile reveal">
+                    <div class="tile-icon">🧠</div>
+                    <div class="tile-name">Generative AI</div>
+                    <p class="tile-desc">Custom-trained LLMs and RAG pipelines that understand your business context and brand voice perfectly.</p>
+                </div>
+                <div class="service-tile reveal" style="transition-delay: 0.1s;">
+                    <div class="tile-icon">⚙️</div>
+                    <div class="tile-name">Business Automation</div>
+                    <p class="tile-desc">End-to-end intelligent workflows that eliminate manual data entry and repetitive cognitive tasks.</p>
+                </div>
+                <div class="service-tile reveal" style="transition-delay: 0.2s;">
+                    <div class="tile-icon">📊</div>
+                    <div class="tile-name">ML Models</div>
+                    <p class="tile-desc">Predictive analytics and custom classification models for churn prediction, demand forecasting, and more.</p>
+                </div>
+                <div class="service-tile reveal">
+                    <div class="tile-icon">💬</div>
+                    <div class="tile-name">AI Chatbots</div>
+                    <p class="tile-desc">Next-gen conversational agents that don't just follow scripts — they solve complex customer queries.</p>
+                </div>
+                <div class="service-tile reveal" style="transition-delay: 0.1s;">
+                    <div class="tile-icon">📄</div>
+                    <div class="tile-name">Document AI</div>
+                    <p class="tile-desc">Automated extraction and understanding of data from unstructured PDFs, invoices, and legal documents.</p>
+                </div>
+                <div class="service-tile reveal" style="transition-delay: 0.2s;">
+                    <div class="tile-icon">🚀</div>
+                    <div class="tile-name">MLOps</div>
+                    <p class="tile-desc">Deploying, monitoring, and scaling your AI models in production with enterprise-grade reliability.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. USE CASE MATRIX -->
+        <section class="matrix-section">
+            <h2 style="font-size: 48px; margin-bottom: 60px; text-align: center;" class="reveal">The Impact Matrix.</h2>
+            <div class="matrix-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Industry</th>
+                            <th>AI Chatbot</th>
+                            <th>Automation</th>
+                            <th>Predictions</th>
+                            <th>Document AI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>E-Commerce</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="dash">—</span></td></tr>
+                        <tr><td>Healthcare</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+                        <tr><td>Finance</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+                        <tr><td>SaaS</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="dash">—</span></td></tr>
+                        <tr><td>Real Estate</td><td><span class="check">✓</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. TECH STACK -->
+        <section class="tech-stack reveal">
+            <h2 style="font-size: 32px; color: #111;">Our Technical Foundation.</h2>
+            <div class="tech-grid">
+                <span class="tech-item">OpenAI</span>
+                <span class="tech-item">LangChain</span>
+                <span class="tech-item">HuggingFace</span>
+                <span class="tech-item">PyTorch</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Pinecone</span>
+                <span class="tech-item">LlamaIndex</span>
+                <span class="tech-item">Anthropic</span>
+            </div>
+        </section>
+
+        <!-- 5. ROI CALCULATOR -->
+        <section class="roi-section reveal">
+            <h2 style="font-size: 48px; letter-spacing: -2px;">The ROI of Intelligence.</h2>
+            <p style="color: #888; margin-top: 10px;">Calculate the potential savings for your organization.</p>
+            
+            <div class="roi-card">
+                <p style="font-size: 20px; font-weight: 500;">How many hours does your team spend <br>on manual tasks per week?</p>
+                <div class="roi-slider-container">
+                    <input type="range" id="hourSlider" min="10" max="500" value="40">
+                    <p style="margin-top: 15px; font-weight: 600;"><span id="hourValue">40</span> hours / week</p>
+                </div>
+                <div class="roi-output" id="roiValue">₹12,48,000</div>
+                <p class="roi-sub-output">potential annual savings through automation</p>
+            </div>
+
+            <a href="#contact" style="display: inline-block; background: #FFF; color: var(--primary-orange); padding: 24px 60px; border-radius: 100px; font-size: 18px; font-weight: 700; text-decoration: none; margin-top: 20px;">Explore AI for My Business</a>
+        </section>
+        <!-- 6. CONTACT -->
+        <section class="contact-section reveal" id="contact" style="padding: 140px 80px; text-align: center; border-top: 1px solid #EEE;">
+            <span class="hero-badge" style="margin-bottom: 20px;">Get Started</span>
+            <h2 style="font-size: 56px; letter-spacing: -2px; margin-bottom: 30px;">Let's build your <br><span>AI roadmap.</span></h2>
+            <p style="color: #666; max-width: 600px; margin: 0 auto 40px;">Request a discovery call to see how custom AI can transform your unit economics.</p>
+            <a href="mailto:hello@sarsglobal.com" style="display: inline-block; background: var(--near-black); color: #FFF; padding: 20px 60px; border-radius: 100px; text-decoration: none; font-weight: 700;">Email Us &rarr;</a>
+        </section>
+    </main>
+
+    <footer style="padding: 80px 40px; background: #FFF; border-top: 1px solid #EEE;">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1400px; margin: 0 auto; gap: 40px;">
+            <div>
+                <a href="../../index.html" class="logo" style="color: var(--text-main); display: block; margin-bottom: 20px;">SARS<span>.Global</span></a>
+                <p style="color: #666; font-size: 14px;">Building the intelligent infrastructure of the future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cursor
+            const dot = document.getElementById('cursor-dot');
+            const ring = document.getElementById('cursor-ring');
+            let mx=0, my=0, rx=0, ry=0;
+            window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+            function anim() { rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); }
+            anim();
+
+            // Reveal
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Neural Network Animation
+            const nodesContainer = document.getElementById('nodes');
+            const connContainer = document.getElementById('connections');
+            const nodes = [];
+            for(let i=0; i<40; i++) {
+                const node = { x: Math.random()*1000, y: Math.random()*1000, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5 };
+                nodes.push(node);
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("r", "3");
+                circle.setAttribute("fill", "rgba(255,107,43,0.5)");
+                nodesContainer.appendChild(circle);
+                node.el = circle;
+            }
+
+            function updateNetwork() {
+                connContainer.innerHTML = '';
+                nodes.forEach((n, i) => {
+                    n.x += n.vx; n.y += n.vy;
+                    if(n.x < 0 || n.x > 1000) n.vx *= -1;
+                    if(n.y < 0 || n.y > 1000) n.vy *= -1;
+                    n.el.setAttribute("cx", n.x);
+                    n.el.setAttribute("cy", n.y);
+
+                    for(let j=i+1; j<nodes.length; j++) {
+                        const m = nodes[j];
+                        const dist = Math.sqrt((n.x-m.x)**2 + (n.y-m.y)**2);
+                        if(dist < 150) {
+                            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                            line.setAttribute("x1", n.x); line.setAttribute("y1", n.y);
+                            line.setAttribute("x2", m.x); line.setAttribute("y2", m.y);
+                            line.setAttribute("stroke-opacity", 1 - (dist/150));
+                            connContainer.appendChild(line);
+                        }
+                    }
+                });
+                requestAnimationFrame(updateNetwork);
+            }
+            updateNetwork();
+
+            // ROI Calculator
+            const slider = document.getElementById('hourSlider');
+            const hourValue = document.getElementById('hourValue');
+            const roiValue = document.getElementById('roiValue');
+            
+            slider.addEventListener('input', (e) => {
+                const hours = e.target.value;
+                hourValue.innerText = hours;
+                // Simple Calc: hours * ₹600 (avg hr rate) * 52 weeks * 0.8 (automation efficiency)
+                const savings = hours * 600 * 52 * 0.8;
+                roiValue.innerText = "₹" + Math.floor(savings).toLocaleString('en-IN');
+            });
+        });
+    </script>
+</body>
+</html>
